@@ -36,8 +36,7 @@ class RegistrationController extends AbstractController
 
             return $this->redirectToRoute('_preview_error');
         }
-
-        return $this->render('registration/register.html.twig', [
+        return $this->render('registration/RegisterRecruiter.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
     }
