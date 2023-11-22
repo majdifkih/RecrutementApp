@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+
+
+    <h1> Register Candidat </h1>
+    {{ form_errors(recForm) }}
+    {{ form_start(recForm) }}
+    {{ form_row(recForm.email) }}
+    {{ form_row(recForm.plainPassword, {
+        label: 'Password'
+    }) }}
+    {{ form_row(recForm.first_name) }}
+    {{ form_row(recForm.last_name) }}
+    {{ form_row(recForm.Company_Name) }}
+
+    {{ form_end(recForm) }}
+
+    <button type="submit" class="btn">Register</button>
+
+{#    <h1>Register Recruiter </h1>#}
+{#    {{ form_errors(caForm) }}#}
+{#    {{ form_start(caForm) }}#}
+{#    {{ form_row(caForm.email) }}#}
+{#    {{ form_row(caForm.plainPassword, {#}
+{#        label: 'Password'#}
+{#    }) }}#}
+{#    {{ form_row(caForm.first_name) }}#}
+{#    {{ form_row(caForm.last_name) }}#}
+
+
+
+
+{#    {{ form_end(recForm) }}#}
+
+
+{% endblock %}
