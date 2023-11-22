@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\OffreRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -28,6 +30,17 @@ class Offre
 
     #[ORM\Column(length: 255)]
     private ?string $Description = null;
+
+    #[ORM\ManyToMany(targetEntity: Candidat::class, mappedBy: 'Offre')]
+    private Collection $candidats;
+
+    #[ORM\ManyToOne(inversedBy: 'Offre')]
+    private ?Recruiter $recruiter = null;
+
+    public function __construct()
+    {
+        $this->candidats = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -90,6 +103,45 @@ class Offre
     public function setDescription(string $Description): static
     {
         $this->Description = $Description;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Candidat>
+     */
+    public function getCandidats(): Collection
+    {
+        return $this->candidats;
+    }
+
+    public function addCandidat(Candidat $candidat): static
+    {
+        if (!$this->candidats->contains($candidat)) {
+            $this->candidats->add($candidat);
+            $candidat->addOffre($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCandidat(Candidat $candidat): static
+    {
+        if ($this->candidats->removeElement($candidat)) {
+            $candidat->removeOffre($this);
+        }
+
+        return $this;
+    }
+
+    public function getRecruiter(): ?Recruiter
+    {
+        return $this->recruiter;
+    }
+
+    public function setRecruiter(?Recruiter $recruiter): static
+    {
+        $this->recruiter = $recruiter;
 
         return $this;
     }

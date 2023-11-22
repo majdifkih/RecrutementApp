@@ -6,12 +6,9 @@ use App\Repository\JobRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: JobRepository::class)]
-class Job
+class Job extends Offre
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
+
 
     #[ORM\Column]
     private ?float $Salary_Prop = null;
@@ -19,10 +16,7 @@ class Job
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $Contract_Type = null;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+
 
     public function getSalaryProp(): ?float
     {

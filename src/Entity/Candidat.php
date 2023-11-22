@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CandidatRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -23,6 +25,14 @@ class Candidat extends User
 
     #[ORM\Column(length: 255)]
     private ?string $cv = null;
+
+    #[ORM\ManyToMany(targetEntity: Offre::class, inversedBy: 'candidats')]
+    private Collection $Offre;
+
+    public function __construct()
+    {
+        $this->Offre = new ArrayCollection();
+    }
 
 
 
@@ -82,6 +92,30 @@ class Candidat extends User
     public function setCv(string $cv): static
     {
         $this->cv = $cv;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Offre>
+     */
+    public function getOffre(): Collection
+    {
+        return $this->Offre;
+    }
+
+    public function addOffre(Offre $offre): static
+    {
+        if (!$this->Offre->contains($offre)) {
+            $this->Offre->add($offre);
+        }
+
+        return $this;
+    }
+
+    public function removeOffre(Offre $offre): static
+    {
+        $this->Offre->removeElement($offre);
 
         return $this;
     }

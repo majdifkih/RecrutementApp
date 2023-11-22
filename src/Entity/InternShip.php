@@ -7,13 +7,8 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: InternShipRepository::class)]
-class InternShip
+class InternShip extends Offre
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
-
     #[ORM\Column]
     private ?bool $Payed = null;
 
@@ -22,11 +17,6 @@ class InternShip
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $end_date = null;
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     public function isPayed(): ?bool
     {
