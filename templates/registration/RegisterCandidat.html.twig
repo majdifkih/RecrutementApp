@@ -2,12 +2,14 @@
 
 {% block title %}Register{% endblock %}
 
+
 {% block body %}
 
 
-    <h1> Register Candidat </h1>
-    {{ form_errors(canForm) }}
 
+
+
+    {{ form_errors(canForm) }}
     {{ form_start(canForm) }}
     {{ form_row(canForm.email) }}
     {{ form_row(canForm.plainPassword, {
@@ -20,8 +22,12 @@
     {{ form_row(canForm.adress) }}
     {{ form_row(canForm.skills) }}
     {{ form_row(canForm.cv) }}
-    <button type="submit" class="btn">Register</button>
+    <button type="submit" class="btn btn-outline-primary">Register</button>
     {{ form_end(canForm) }}
+
+
+
+
 
 
 
