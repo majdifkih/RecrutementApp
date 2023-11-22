@@ -11,7 +11,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
 #[ORM\UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
-#[ORM\InheritanceType("SINGLE_TABLE")]
+#[ORM\InheritanceType("JOINED")]
 #[ORM\DiscriminatorColumn(name: 'user_type',type: 'string')]
 #[ORM\DiscriminatorMap(["user"=>User::class,"recruiter"=>Recruiter::class,"candidat"=>Candidat::class])]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
