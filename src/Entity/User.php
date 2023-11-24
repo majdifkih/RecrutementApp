@@ -10,6 +10,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
+
 #[ORM\UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 #[ORM\InheritanceType("JOINED")]
 #[ORM\DiscriminatorColumn(name: 'user_type',type: 'string')]
@@ -20,6 +21,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
+
+    #[ORM\Column(type: 'json')]
+    private ?array $roles = [];
 
     #[ORM\Column(length: 180, unique: true)]
     private ?string $email = null;
@@ -34,6 +38,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $last_name = null;
+
 
     public function getId(): ?int
     {
@@ -67,18 +72,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getRoles(): array
     {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[Candidat::class] = 'Candidat_USER';
-        $roles[Recruiter::class]= 'Recruiter_USER';
-
+        $reflectionClass = new \ReflectionClass($this);
+        $property = $reflectionClass->getProperty('user_type');
+        $property->setAccessible(true);
+        $roles = [$property->getValue($this)];
         return array_unique($roles);
     }
 
     public function setRoles(array $roles): static
     {
         $this->roles = $roles;
-
         return $this;
     }
 

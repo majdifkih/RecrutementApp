@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -29,7 +30,7 @@ class CandidatType extends RegistrationFormType
                 'allow_delete' => true,
                 'by_reference' => false,
             ])
-            ->add('cv',TextType::class)
+            ->add('cv',FileType::class)
         ;
     }
 
@@ -37,6 +38,6 @@ class CandidatType extends RegistrationFormType
     {
         $resolver->setDefaults([
             'data_class' => Candidat::class,
-        ]);
+            ]);
     }
 }

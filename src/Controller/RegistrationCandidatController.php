@@ -13,6 +13,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
+
+
 class RegistrationCandidatController extends AbstractController
 {
     #[Route('/registration/candidat', name: 'app_registration_candidat')]

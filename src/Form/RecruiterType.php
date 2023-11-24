@@ -22,6 +22,7 @@ class RecruiterType extends RegistrationFormType
     {
         $resolver->setDefaults([
             'data_class' => Recruiter::class,
+            'label' => false,
         ]);
     }
 }

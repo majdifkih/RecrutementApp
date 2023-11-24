@@ -4,11 +4,6 @@
 
 
 {% block body %}
-
-
-
-
-
     {{ form_errors(canForm) }}
     {{ form_start(canForm) }}
     {{ form_row(canForm.email) }}
@@ -24,12 +19,4 @@
     {{ form_row(canForm.cv) }}
     <button type="submit" class="btn btn-outline-primary">Register</button>
     {{ form_end(canForm) }}
-
-
-
-
-
-
-
-
 {% endblock %}
