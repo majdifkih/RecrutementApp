@@ -29,6 +29,8 @@ class Candidat extends User
     #[ORM\ManyToMany(targetEntity: Offre::class, inversedBy: 'candidats')]
     private Collection $Offre;
 
+
+
     public function __construct()
     {
         $this->Offre = new ArrayCollection();
@@ -116,6 +118,18 @@ class Candidat extends User
     public function removeOffre(Offre $offre): static
     {
         $this->Offre->removeElement($offre);
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
 
         return $this;
     }

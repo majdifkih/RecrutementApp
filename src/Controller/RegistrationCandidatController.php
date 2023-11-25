@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Candidat;
 use App\Entity\Recruiter;
+use App\Entity\User;
 use App\Form\CandidatType;
 use App\Form\RecruiterType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -21,22 +22,25 @@ class RegistrationCandidatController extends AbstractController
     public function registerRecruiter(Request $requestR, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
         $candidat = new Candidat();
+        $user= new User();
         $formC = $this->createForm(CandidatType::class, $candidat);
         $formC->handleRequest($requestR);
 
         if ($formC->isSubmitted() && $formC->isValid()) {
-            // encode the plain password
+//            $user->setEmail($candidat->getEmail());
+            $user->setRoles(['candidat_role']);
             $candidat->setPassword(
                 $userPasswordHasher->hashPassword(
                     $candidat,
                     $formC->get('plainPassword')->getData()
                 )
             );
-
+//            $user->setPassword($candidat->getPassword());
+//            $user->setFirstName($candidat->getFirstName());
+//            $user->setLastName($candidat->getLastName());
             $entityManager->persist($candidat);
+//            $entityManager->persist($user);
             $entityManager->flush();
-            // do anything else you need here, like send an email
-
             return $this->redirectToRoute('app_home_candidat');
         }
         return $this->render('registration/RegisterCandidat.html.twig', [

@@ -3,7 +3,12 @@
 namespace App\Form;
 
 use App\Entity\Offre;
+use App\Entity\Recruiter;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,10 +18,18 @@ class OffreType extends AbstractType
     {
         $builder
             ->add('Title')
-            ->add('Limit_Date')
-            ->add('Req_Skills')
-            ->add('Mission')
-            ->add('Description')
+            ->add('Limit_Date',DateType::class)
+            ->add('Req_Skills',CollectionType::class,[
+                'entry_type'=>TextareaType::class,
+                'allow_add' => true,
+                'by_reference' => false,
+            ])
+            ->add('Mission',)
+            ->add('Description',TextareaType::class)
+            ->add('Recruiter',EntityType::class,[
+                'class'=>Recruiter::class,
+                'choice_label'=>'first_name'
+            ])
         ;
     }
 

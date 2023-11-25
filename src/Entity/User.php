@@ -9,12 +9,11 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[ORM\Table(name: '`user`')]
-
-#[ORM\UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 #[ORM\InheritanceType("JOINED")]
-#[ORM\DiscriminatorColumn(name: 'user_type',type: 'string')]
+//#[ORM\DiscriminatorColumn(name: 'user_type',type: 'string')]
 #[ORM\DiscriminatorMap(["user"=>User::class,"recruiter"=>Recruiter::class,"candidat"=>Candidat::class])]
+#[ORM\UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
+#[ORM\Table(name: '`user`')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -22,7 +21,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: 'json')]
+    #[ORM\Column]
     private ?array $roles = [];
 
     #[ORM\Column(length: 180, unique: true)]
