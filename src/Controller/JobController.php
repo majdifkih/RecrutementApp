@@ -59,10 +59,10 @@ class JobController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_job_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('get_all_jobs', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('job/edit.html.twig', [
+        return $this->render('home_recruteur/editJob.html.twig', [
             'job' => $job,
             'form' => $form,
         ]);
@@ -75,7 +75,6 @@ class JobController extends AbstractController
             $entityManager->remove($job);
             $entityManager->flush();
         }
-
         return $this->redirectToRoute('get_all_jobs', [], Response::HTTP_SEE_OTHER);
     }
 }
