@@ -24,26 +24,6 @@ class HomeRecruteurController extends AbstractController
         ]);
     }
 
-    #[Route('/addJob',name:'add_new_job',methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
-    {
-        $job = new Job();
-        $form = $this->createForm(JobType::class, $job);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($job);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('app_job_index', [], Response::HTTP_SEE_OTHER);
-        }
-        return $this->render('home_recruteur/addJob.html.twig', [
-            'job' => $job,
-            'form' => $form,
-        ]);
-    }
-
-
     #[Route ('/alljobs',name:'get_all_jobs',methods: ['GET'])]
     public function allJobs(OffreRepository $offreRepository): Response
     {

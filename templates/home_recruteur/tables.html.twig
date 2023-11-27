@@ -66,31 +66,22 @@
                                 <tr>
                                     <th>Title</th>
                                     <th>Limit Date</th>
-                                    <th>Type</th>
+{#                                    <th>Type</th>#}
                                     <th>Mission</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>
                                 </thead>
-                                <tfoot>
-                                <tr>
-                                    <th>Title</th>
-                                    <th>Limit Date</th>
-                                    <th>Type</th>
-                                    <th>Mission</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
-                                </tr>
-                                </tfoot>
+
                                 <tbody>
                                 {% for offre in offers %}
                                 <tr>
                                     <td>{{ offre.Title }}</td>
-                                    <td>{{ offre.limit_date }}</td>
-                                    <td>{{ offre.Offre_Type }}</td>
+                                    <td>{{ offre.LimitDate ? offre.LimitDate|date('Y-m-d') : '' }}</td>
+{#                                    <td>{{ offre.discriminatorValue }}</td>#}
                                     <td>{{ offre.mission }}</td>
-                                    <td>Edit</td>
-                                    <td>Delete</td>
+                                    <td><a href=""> Edit </a> </td>
+                                    <td> <a href=""> Delete </a> </td>
                                 </tr>
                                 </tbody>
                                 {% else %}

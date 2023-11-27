@@ -68,7 +68,14 @@
                     </div>
                 </div>
 
-                <a href="{{ path ('app_registration_recruiter') }}" class="nav-item nav-link">Register</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Register</a>
+                    <div class="dropdown-menu rounded-0 m-0">
+                        <a href="{{ path ('app_registration_recruiter') }}" class="dropdown-item">Recruiter</a>
+                        <a href="{{ path('app_registration_candidat') }}" class="dropdown-item">Candidat</a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </nav>

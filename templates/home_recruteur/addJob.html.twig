@@ -50,15 +50,10 @@
             <!-- Begin Page Content -->
             <div class="container-fluid">
 
-                <form class="user">
+                {{ form_start(form) }}
                 {{ form_widget(form) }}
-                    <button type="submit" class="btn btn-outline-primary">Add Job </button>
-                </form>
-
-
-
-
-
+                <button class="btn">{{ button_label|default('Save') }}</button>
+                {{ form_end(form) }}
 
             </div>
             <!-- /.container-fluid -->

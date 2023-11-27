@@ -22,25 +22,25 @@ class JobController extends AbstractController
         ]);
     }
 
-//    #[Route('/new', name: 'app_job_new', methods: ['GET', 'POST'])]
-//    public function new(Request $request, EntityManagerInterface $entityManager): Response
-//    {
-//        $job = new Job();
-//        $form = $this->createForm(JobType::class, $job);
-//        $form->handleRequest($request);
-//
-//        if ($form->isSubmitted() && $form->isValid()) {
-//            $entityManager->persist($job);
-//            $entityManager->flush();
-//
-//            return $this->redirectToRoute('app_job_index', [], Response::HTTP_SEE_OTHER);
-//        }
-//
-//        return $this->render('job/new.html.twig', [
-//            'job' => $job,
-//            'form' => $form,
-//        ]);
-//    }
+    #[Route('/new', name: 'app_job_new', methods: ['GET', 'POST'])]
+    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $job = new Job();
+        $form = $this->createForm(JobType::class, $job);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($job);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('get_all_jobs', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('/home_recruteur/addJob.html.twig', [
+            'job' => $job,
+            'form' => $form,
+        ]);
+    }
 
     #[Route('/{id}', name: 'app_job_show', methods: ['GET'])]
     public function show(Job $job): Response
@@ -76,6 +76,6 @@ class JobController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('app_job_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('get_all_jobs', [], Response::HTTP_SEE_OTHER);
     }
 }
