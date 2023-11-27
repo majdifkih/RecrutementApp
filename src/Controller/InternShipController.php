@@ -11,18 +11,18 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/intern/ship')]
+#[Route('/internship')]
 class InternShipController extends AbstractController
 {
     #[Route('/', name: 'app_intern_ship_index', methods: ['GET'])]
     public function index(InternShipRepository $internShipRepository): Response
     {
-        return $this->render('intern_ship/index.html.twig', [
-            'intern_ships' => $internShipRepository->findAll(),
+        return $this->render('internship/index.html.twig', [
+            'internships' => $internShipRepository->findAll(),
         ]);
     }
 
-    #[Route('/new', name: 'app_intern_ship_new', methods: ['GET', 'POST'])]
+    #[Route('/newIntership', name: 'app_intern_ship_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $internShip = new InternShip();
@@ -33,11 +33,11 @@ class InternShipController extends AbstractController
             $entityManager->persist($internShip);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_intern_ship_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('get_all_jobs', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('intern_ship/new.html.twig', [
-            'intern_ship' => $internShip,
+        return $this->render('/home_recruteur/addInternship.html.twig', [
+            'internShip' => $internShip,
             'form' => $form,
         ]);
     }

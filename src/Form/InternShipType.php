@@ -17,10 +17,12 @@ class InternShipType extends OffreType
         $builder
 
             ->add('Payed',ChoiceType::class,[
-                'choice'=>[
+                'choices'=>[
                     'YES'=>'YES',
                     'NO'=>'NO'
-            ]])
+            ],
+                'expanded'=>true
+            ])
             ->add('Start_Date',DateType::class)
             ->add('end_date',DateType::class)
         ;
