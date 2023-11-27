@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Job;
 use App\Form\JobType;
 use App\Repository\JobRepository;
+use App\Repository\OffreRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -44,10 +45,10 @@ class HomeRecruteurController extends AbstractController
 
 
     #[Route ('/alljobs',name:'get_all_jobs',methods: ['GET'])]
-    public function allJobs(JobRepository $jobRepository): Response
+    public function allJobs(OffreRepository $offreRepository): Response
     {
         return $this->render('home_recruteur/tables.html.twig', [
-            'jobs' => $jobRepository->findAll(),
+            'offers' => $offreRepository->findAll(),
         ]);
     }
 
