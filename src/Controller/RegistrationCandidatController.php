@@ -29,7 +29,7 @@ class RegistrationCandidatController extends AbstractController
 
         if ($formC->isSubmitted() && $formC->isValid()) {
 //            $user->setEmail($candidat->getEmail());
-            $user->setRoles(['candidat_role']);
+//            $user->setRoles(['candidat_role']);
             $candidat->setPassword(
                 $userPasswordHasher->hashPassword(
                     $candidat,
