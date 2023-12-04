@@ -1,55 +1,245 @@
-{% extends 'base.html.twig' %}
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>crud dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/assets/css/DashCss/bootstrap.min.css">
+    <!----css3---->
+    <link rel="stylesheet" href="/assets/css/DashCss/custom.css">
 
-{% block title %}Hello HomeRecruteurController!{% endblock %}
 
-{% block body %}
-    {% block stylesheets %}
-        {{ parent() }}
-        <link rel="stylesheet" href="/css/style.css">
-    {% endblock %}
-    <style>
+    <!--google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    </style>
 
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                App Recrutement
-            </a>
+    <!--google material icon-->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons"rel="stylesheet">
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">
-                            <i class="bi bi-house-door"></i> Accueil
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="#">
-                            <i class="bi bi-briefcase"></i> Offres
-                        </a>
-                    </li>
-                    <li class="drop-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi bi-person"></i> Compte
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> Profile</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-left"></i> Déconnexion</a></li>
-                        </ul>
-                    </li>
-                </ul>
+</head>
+<body>
+
+
+
+<div class="wrapper">
+
+
+
+
+
+
+
+    <!-------page-content start----------->
+
+
+
+        <!------top-navbar-start----------->
+
+        <div class="top-navbar">
+
+                <div class="row">
+
+
+
+
+
+                    <div class="col-10 col-md-9 col-lg-12 order-1 order-md-3">
+
+                            <nav class="navbar p-0">
+                                <ul class="nav navbar-nav flex-row ml-auto">
+                                    <li class="dropdown nav-item active">
+                                        <a class="nav-link" href="#" data-toggle="dropdown">
+                                            <span class="material-icons">notifications</span>
+                                            <span class="notification">4</span>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">You Have 4 New Messages</a></li>
+                                            <li><a href="#">You Have 4 New Messages</a></li>
+                                            <li><a href="#">You Have 4 New Messages</a></li>
+                                            <li><a href="#">You Have 4 New Messages</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">
+                                            <span class="material-icons">question_answer</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="dropdown nav-item">
+                                        <a class="nav-link" href="#" data-toggle="dropdown">
+                                            <img src="/assets/img/user.jpg" style="width:40px; border-radius:50%;"/>
+                                            <span class="xp-user-live"></span>
+                                        </a>
+                                        <ul class="dropdown-menu small-menu">
+                                            <li><a href="#">
+                                                    <span class="material-icons">person_outline</span>
+                                                    Profile
+                                                </a></li>
+                                            <li><a href="#">
+                                                    <span class="material-icons">settings</span>
+                                                    Settings
+                                                </a></li>
+                                            <li><a href="#">
+                                                    <span class="material-icons">logout</span>
+                                                    Logout
+                                                </a></li>
+
+                                        </ul>
+                                    </li>
+
+
+                                </ul>
+                            </nav>
+
+                    </div>
+
+                </div>
+
+
+                <div class="xp-breadcrumbbar text-center">
+                    <div class="col-md-5 col-lg-4 order-3 order-md-2">
+                        <div class="xp-searchbar">
+                            <form>
+                                <div class="input-group">
+                                    <input type="search" class="form-control"
+                                           placeholder="Search">
+                                    <div class="input-group-append">
+                                        <button class="btn" type="submit" id="button-addon2">Search
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <h4 class="page-title">Dashboard</h4>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Name</a></li>
+                        <li class="breadcrumb-item active" aria-curent="page">Dashboard</li>
+                    </ol>
+                </div>
+
+
+
+        </div>
+        <!------top-navbar-end----------->
+
+
+        <!------main-content-start----------->
+
+        <div class="main-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-wrapper">
+
+                        <div class="table-title">
+                            <div class="row">
+                                <div class="col-sm-6 p-0 flex justify-content-lg-start justify-content-center">
+                                    <h2 class="ml-lg-2">Liste des offres</h2>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <table class="table table-striped table-hover">
+                            <thead>
+                            <tr>
+
+                                <th>Name</th>
+
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <tr>
+
+                                <th>Thomas Hardy</th>
+
+                                <th>
+                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal">
+                                       <button> <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>Detail</button>
+                                    </a>
+
+                                </th>
+                            </tr>
+
+
+
+                            </tbody>
+
+
+                        </table>
+
+                        <div class="clearfix">
+                            <div class="hint-text">showing <b>5</b> out of <b>25</b></div>
+                            <ul class="pagination">
+                                <li class="page-item disabled"><a href="#">Previous</a></li>
+                                <li class="page-item "><a href="#"class="page-link">1</a></li>
+                                <li class="page-item "><a href="#"class="page-link">2</a></li>
+                                <li class="page-item active"><a href="#"class="page-link">3</a></li>
+                                <li class="page-item "><a href="#"class="page-link">4</a></li>
+                                <li class="page-item "><a href="#"class="page-link">5</a></li>
+                                <li class="page-item "><a href="#" class="page-link">Next</a></li>
+                            </ul>
+                        </div>
+
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+
+
+
+
+
+
             </div>
         </div>
-    </nav>
 
-    <div class="title">
-        <h1>Liste des offres</h1>
-    </div>
-    <div class="offre-list">
-        <p>ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-            ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-            ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</p>
+        <!------main-content-end----------->
+
+
+
     </div>
 
-{% endblock %}
+
+
+
+<!-------complete html----------->
+
+
+
+
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="/assets/js/Dash/jquery-3.3.1.slim.min.js"></script>
+
+<script src="/assets/js/Dash/bootstrap.min.js"></script>
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
+
+
