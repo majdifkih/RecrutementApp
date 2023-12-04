@@ -22,25 +22,22 @@ class RegistrationCandidatController extends AbstractController
     public function registerRecruiter(Request $requestR, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
         $candidat = new Candidat();
-//        $user= new User();
-//        $user->setRoles(['candidat_role']);
         $formC = $this->createForm(CandidatType::class, $candidat);
         $formC->handleRequest($requestR);
 
         if ($formC->isSubmitted() && $formC->isValid()) {
-//            $user->setEmail($candidat->getEmail());
-//            $user->setRoles(['candidat_role']);
+//
             $candidat->setPassword(
                 $userPasswordHasher->hashPassword(
                     $candidat,
                     $formC->get('plainPassword')->getData()
                 )
             );
-//            $user->setPassword($candidat->getPassword());
-//            $user->setFirsamtNe($candidat->getFirstName());
-//            $user->setLastName($candidat->getLastName());
+
+            $candidat->setRoles(['CANDIDAT']);
+
             $entityManager->persist($candidat);
-//            $entityManager->persist($user);
+
             $entityManager->flush();
             return $this->redirectToRoute('app_home_candidat');
         }

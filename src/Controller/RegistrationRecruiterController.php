@@ -31,6 +31,7 @@ class RegistrationRecruiterController extends AbstractController
                 )
             );
 
+            $rec->setRoles(['RECRUITER']);
             $entityManager->persist($rec);
             $entityManager->flush();
             // do anything else you need here, like send an email

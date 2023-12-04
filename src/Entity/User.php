@@ -10,8 +10,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\InheritanceType("JOINED")]
-//#[ORM\DiscriminatorColumn(name: 'user_type',type: 'string')]
-#[ORM\DiscriminatorMap(["user"=>User::class,"recruiter"=>Recruiter::class,"candidat"=>Candidat::class])]
 #[ORM\UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 #[ORM\Table(name: '`user`')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
@@ -37,6 +35,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $last_name = null;
+
+    #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
+    private ?Candidat $candidat = null;
 
 
     public function getId(): ?int
@@ -128,6 +129,28 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setLastName(?string $last_name): static
     {
         $this->last_name = $last_name;
+
+        return $this;
+    }
+
+    public function getCandidat(): ?Candidat
+    {
+        return $this->candidat;
+    }
+
+    public function setCandidat(?Candidat $candidat): static
+    {
+        // unset the owning side of the relation if necessary
+        if ($candidat === null && $this->candidat !== null) {
+            $this->candidat->setUser(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($candidat !== null && $candidat->getUser() !== $this) {
+            $candidat->setUser($this);
+        }
+
+        $this->candidat = $candidat;
 
         return $this;
     }

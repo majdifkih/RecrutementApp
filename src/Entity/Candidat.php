@@ -30,7 +30,6 @@ class Candidat extends User
     private Collection $Offre;
 
 
-
     public function __construct()
     {
         $this->Offre = new ArrayCollection();
@@ -122,15 +121,4 @@ class Candidat extends User
         return $this;
     }
 
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
-
-    public function setUser(?User $user): static
-    {
-        $this->user = $user;
-
-        return $this;
-    }
 }
