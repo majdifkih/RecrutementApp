@@ -40,10 +40,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?Candidat $candidat = null;
 
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+
 
     public function getEmail(): ?string
     {
@@ -67,7 +64,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return (string) $this->email;
     }
 
-
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
     /**
      * @see UserInterface
      */

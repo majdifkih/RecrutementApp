@@ -28,9 +28,13 @@ class JobController extends AbstractController
         $job = new Job();
         $form = $this->createForm(JobType::class, $job);
         $form->handleRequest($request);
+        $recruiter = $this->getUser();
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+
             $entityManager->persist($job);
+            $job->setRecruiter($recruiter);
             $entityManager->flush();
 
             return $this->redirectToRoute('get_all_jobs', [], Response::HTTP_SEE_OTHER);
