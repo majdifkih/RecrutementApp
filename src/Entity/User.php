@@ -67,16 +67,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return (string) $this->email;
     }
 
+
     /**
      * @see UserInterface
      */
+
     public function getRoles(): array
     {
-        $reflectionClass = new \ReflectionClass($this);
-        $property = $reflectionClass->getProperty('user_type');
-        $property->setAccessible(true);
-        $roles = [$property->getValue($this)];
-        return array_unique($roles);
+        return $this->roles;
     }
 
     public function setRoles(array $roles): static

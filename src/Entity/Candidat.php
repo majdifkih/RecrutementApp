@@ -29,6 +29,9 @@ class Candidat extends User
     #[ORM\ManyToMany(targetEntity: Offre::class, inversedBy: 'candidats')]
     private Collection $Offre;
 
+    #[ORM\OneToOne(targetEntity: User::class, inversedBy: 'candidat')]
+    #[ORM\JoinColumn(name: 'user_id', referencedColumnName: 'id')]
+    private ?User $user = null;
 
     public function __construct()
     {
