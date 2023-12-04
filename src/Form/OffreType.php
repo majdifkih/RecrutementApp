@@ -26,10 +26,10 @@ class OffreType extends AbstractType
             ])
             ->add('Mission',)
             ->add('Description',TextareaType::class)
-            ->add('Recruiter',EntityType::class,[
-                'class'=>Recruiter::class,
-                'choice_label'=>'first_name'
-            ])
+//            ->add('Recruiter',EntityType::class,[
+//                'class'=>Recruiter::class,
+//                'choice_label'=>'first_name'
+//            ])
         ;
     }
 
