@@ -56,13 +56,13 @@ body,html{
 /*==========================================================
   material-icon font-style end
   ================================*/
-  
-  
-  
-  h1,h2,h3,h4,h5,h6,.h1,.21,.h3,.h4{
-	   font-weight:400;
-	   line-height;1.5em;
-  }
+
+
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4 {
+	font-weight: 400;
+	line-height: 1.5em;
+}
   
   p{
 	   font-size:15px;
@@ -156,19 +156,23 @@ overflow:auto;
 	  background-color:#eee;
 	  display:none;
   }
-  
-  #sidebar::-webkit-scrollbar-thumbs{
-	  width:5px;
-	  border-radius:10px;
-	  background-color:#333;
-	  display:none;
-  }
-  
-   #sidebar:hover::-webkit-scrollbar-thumbs{
-	  display:block;
-  }
-  
-   #sidebar:hover::-webkit-scrollbar{
+
+#sidebar::-webkit-scrollbar {
+	width: 5px;
+}
+
+#sidebar::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-color: #333;
+	display: none;
+}
+
+#sidebar:hover::-webkit-scrollbar-thumb {
+	display: block;
+}
+
+
+#sidebar:hover::-webkit-scrollbar{
 	  display:block;
   }
   
@@ -256,7 +260,7 @@ overflow:auto;
 	  #content{
 		  position:relative;
 		  transition:all 0.5s;
-		  background-attachment:#f9fafc;
+		  background-color: #f9fafc;
 	  }
 	
 	
