@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Candidat;
+use App\Form\FileTransformer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
@@ -17,8 +18,16 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CandidatType extends RegistrationFormType
 {
+    private $fileTransformer;
+
+    public function __construct(FileTransformer $fileTransformer)
+    {
+        $this->fileTransformer = $fileTransformer;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+
         parent::buildForm($builder,$options);
         $builder
             ->add('birth_date',BirthdayType::class)
@@ -30,7 +39,9 @@ class CandidatType extends RegistrationFormType
                 'allow_delete' => true,
                 'by_reference' => false,
             ])
-            ->add('cv',FileType::class)
+            ->add('cv', FileType::class)
+            ->get('cv')
+            ->addModelTransformer($this->fileTransformer);
         ;
     }
 
