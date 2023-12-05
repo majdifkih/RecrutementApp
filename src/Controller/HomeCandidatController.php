@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Candidat;
 use App\Entity\InternShip;
 use App\Entity\Job;
 use App\Form\CandidatType;
@@ -43,7 +42,7 @@ class HomeCandidatController extends AbstractController
     }
 
     #[Route('/edit/candidat', name: 'app_edit_candidat', methods: ['GET', 'POST'])]
-    public function editCandidat(Request $request): Response
+    public function editCandidat(Request $request, EntityManagerInterface $em): Response
     {
         $candidat = $this->getUser();
 
@@ -52,12 +51,11 @@ class HomeCandidatController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Enregistrer les modifications dans la base de données
-            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager = $em;
             $entityManager->flush();
 
             // Rediriger vers la page de profil ou une autre page après l'édition
-            return $this->redirectToRoute('app_profil');
+            return $this->redirectToRoute('app_one_candidat');
         }
 
         // Passer le formulaire à la vue
@@ -65,6 +63,7 @@ class HomeCandidatController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
 
 
 }
