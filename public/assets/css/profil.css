@@ -94,3 +94,56 @@ body{
     font-weight: 600;
     color: #0062cc;
 }
+
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #0062cc
+}
+
+.profile-button {
+    background: #0062cc;
+    box-shadow: none;
+    border: none
+}
+
+.profile-button:hover {
+    background: #0062cc
+}
+
+.profile-button:focus {
+    background: #0062cc;
+    box-shadow: none
+}
+
+.profile-button:active {
+    background: #0062cc;
+    box-shadow: none
+}
+
+.back:hover {
+    color: #0062cc;
+    cursor: pointer
+}
+
+.labels {
+    font-size: 11px
+}
+
+.add-experience:hover {
+    background: #4c3e4f;
+    color: #fff;
+    cursor: pointer;
+    border: solid 1px #4b3d4d
+}
+
+.profile-edit-btn {
+    /* Ajoutez ici les styles que vous utilisez pour le bouton */
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4d555e;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    /* Ajoutez d'autres styles au besoin */
+}
