@@ -1,92 +1,14 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ti-icons@0.1.2/css/themify-icons.css">
-    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css'>
-    <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js'></script>
-    <link href="/assets/css/profil.css" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/DashCss/bootstrap.min.css">
-    <!----css3---->
-    <link rel="stylesheet" href="/assets/css/DashCss/custom.css">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!--google fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+{% extends 'base.html.twig' %}
 
-
-    <!--google material icon-->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Icons"rel="stylesheet">
-</head>
-<body>
+{% block title %}Profil!{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('/assets/css/profil.css') }}">
+{% endblock %}
+{% block body %}
 
 <div class="container">
-    <div class="top-navbar ">
 
-        <div class="row">
-
-            <div class="col-10 col-md-9 col-lg-12 order-1 order-md-3">
-
-                <nav class="navbar p-0">
-                    <ul class="nav navbar-nav flex-row ml-auto">
-                        <li class="dropdown nav-item active">
-                            <a class="nav-link" href="#" data-toggle="dropdown">
-                                <span class="material-icons">notifications</span>
-                                <span class="notification">4</span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">You Have 4 New Messages</a></li>
-                                <li><a href="#">You Have 4 New Messages</a></li>
-                                <li><a href="#">You Have 4 New Messages</a></li>
-                                <li><a href="#">You Have 4 New Messages</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span class="material-icons">question_answer</span>
-                            </a>
-                        </li>
-
-                        <li class="dropdown nav-item">
-                            <a class="nav-link" href="#" data-toggle="dropdown">
-                                <img src="/assets/img/user.jpg" style="width:40px; border-radius:50%;"/>
-                                <span class="xp-user-live"></span>
-                            </a>
-                            <ul class="dropdown-menu small-menu">
-                                <li><a href="{{ path('app_one_candidat', {'id': app.user.getId()}) }}">
-                                        <span class="material-icons">person_outline</span>
-                                        Profile
-                                    </a></li>
-                                <li><a href="#">
-                                        <span class="material-icons">settings</span>
-                                        Settings
-                                    </a></li>
-                                <li><a href="#">
-                                        <span class="material-icons">logout</span>
-                                        Logout
-                                    </a></li>
-
-                            </ul>
-                        </li>
-
-
-                    </ul>
-                </nav>
-
-            </div>
-
-        </div>
-
-    </div>
 
     <div class="container emp-profile shadow">
         <form method="post">
@@ -235,9 +157,6 @@
             </div>
         </form>
     </div>
-<script src="/assets/js/Dash/jquery-3.3.1.slim.min.js"></script>
 
-<script src="/assets/js/Dash/bootstrap.min.js"></script>
 
-</body>
-</html>
+{% endblock %}
