@@ -3,49 +3,49 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+    <form method="post">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
 
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
-        </div>
-    {% endif %}
+        {% if app.user %}
+            <div class="mb-3">
+                You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+            </div>
+        {% endif %}
 
-    <section class="vh-100">
-    <div class="container-fluid h-custom">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-    <div class="col-md-9 col-lg-6 col-xl-5">
-        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-             class="img-fluid" alt="Sample image">
-    </div>
-    <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-    <!-- Email input -->
-    <div class="form-outline mb-4">
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+        <section class="vh-100">
+            <div class="container-fluid h-custom">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-md-9 col-lg-6 col-xl-5">
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                             class="img-fluid" alt="Sample image">
+                    </div>
+                    <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                        <!-- Email input -->
+                        <div class="form-outline mb-4">
+                            <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+                            <label for="inputEmail">Email</label>
+                            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+                            <label for="inputPassword">Password</label>
+                            <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 
-    </div>
+                        </div>
 
 
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
-        <div class="d-flex gap-3">
-    <button class="btn btn-lg btn-primary " type="submit">
-        Sign in
-    </button><a href="{{ path('app_registration_candidat') }}" class="text-decoration-none mt-3 text-lg">
-            <span class="text-decoration-none "> Sign Up </span>
-        </a></div>
-    </div>
-    </div>
-    </div>
-    </section>
+                        <input type="hidden" name="_csrf_token"
+                               value="{{ csrf_token('authenticate') }}"
+                        >
+                        <div class="d-flex gap-3">
+                            <button class="btn btn-lg btn-primary " type="submit">
+                                Sign in
+                            </button><a href="{{ path('app_registration_candidat') }}" class="text-decoration-none mt-3 text-lg">
+                                <span class="text-decoration-none "> Sign Up </span>
+                            </a></div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-</form>
+    </form>
 {% endblock %}

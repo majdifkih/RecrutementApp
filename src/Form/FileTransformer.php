@@ -7,25 +7,25 @@ use Symfony\Component\HttpFoundation\File\File;
 
 class FileTransformer implements DataTransformerInterface
 {
-public function transform($file)
-{
-if ($file instanceof File) {
-return $file;
-}
+    public function transform($file)
+    {
+        if ($file instanceof File) {
+            return $file;
+        }
 
-return null;
-}
+        return null;
+    }
 
-public function reverseTransform($path)
-{
-if (!$path) {
-return null;
-}
+    public function reverseTransform($path)
+    {
+        if (!$path) {
+            return null;
+        }
 
-try {
-return new File($path);
-} catch (\Exception $e) {
-throw new TransformationFailedException('Could not transform the path to a File object: ' . $e->getMessage());
-}
-}
+        try {
+            return new File($path);
+        } catch (\Exception $e) {
+            throw new TransformationFailedException('Could not transform the path to a File object: ' . $e->getMessage());
+        }
+    }
 }

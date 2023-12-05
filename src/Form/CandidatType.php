@@ -49,6 +49,6 @@ class CandidatType extends RegistrationFormType
     {
         $resolver->setDefaults([
             'data_class' => Candidat::class,
-            ]);
+        ]);
     }
 }

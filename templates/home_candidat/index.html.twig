@@ -40,120 +40,120 @@
 
 
 
-        <!------top-navbar-start----------->
+    <!------top-navbar-start----------->
 
-        <div class="top-navbar">
+    <div class="top-navbar">
 
-                <div class="row">
-
-
+        <div class="row">
 
 
 
-                    <div class="col-10 col-md-9 col-lg-12 order-1 order-md-3">
-
-                            <nav class="navbar p-0">
-                                <ul class="nav navbar-nav flex-row ml-auto">
-                                    <li class="dropdown nav-item active">
-                                        <a class="nav-link" href="#" data-toggle="dropdown">
-                                            <span class="material-icons">notifications</span>
-                                            <span class="notification">4</span>
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="#">You Have 4 New Messages</a></li>
-                                            <li><a href="#">You Have 4 New Messages</a></li>
-                                            <li><a href="#">You Have 4 New Messages</a></li>
-                                            <li><a href="#">You Have 4 New Messages</a></li>
-                                        </ul>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">
-                                            <span class="material-icons">question_answer</span>
-                                        </a>
-                                    </li>
-
-                                    <li class="dropdown nav-item">
-                                        <a class="nav-link" href="#" data-toggle="dropdown">
-                                            <img src="/assets/img/user.jpg" style="width:40px; border-radius:50%;"/>
-                                            <span class="xp-user-live"></span>
-                                        </a>
-                                        <ul class="dropdown-menu small-menu">
-                                            <li><a href="{{ path('app_one_candidat')}}">
-                                                    <span class="material-icons">person_outline</span>
-                                                    Profile
-                                                </a></li>
-                                            <li><a href="#">
-                                                    <span class="material-icons">settings</span>
-                                                    Settings
-                                                </a></li>
-                                            <li><a href="{{path('app_logout')}}">
-                                                    <span class="material-icons">logout</span>
-                                                    Logout
-                                                </a></li>
-
-                                        </ul>
-                                    </li>
 
 
-                                </ul>
-                            </nav>
+            <div class="col-10 col-md-9 col-lg-12 order-1 order-md-3">
 
-                    </div>
+                <nav class="navbar p-0">
+                    <ul class="nav navbar-nav flex-row ml-auto">
+                        <li class="dropdown nav-item active">
+                            <a class="nav-link" href="#" data-toggle="dropdown">
+                                <span class="material-icons">notifications</span>
+                                <span class="notification">4</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">You Have 4 New Messages</a></li>
+                                <li><a href="#">You Have 4 New Messages</a></li>
+                                <li><a href="#">You Have 4 New Messages</a></li>
+                                <li><a href="#">You Have 4 New Messages</a></li>
+                            </ul>
+                        </li>
 
-                </div>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span class="material-icons">question_answer</span>
+                            </a>
+                        </li>
+
+                        <li class="dropdown nav-item">
+                            <a class="nav-link" href="#" data-toggle="dropdown">
+                                <img src="/assets/img/user.jpg" style="width:40px; border-radius:50%;"/>
+                                <span class="xp-user-live"></span>
+                            </a>
+                            <ul class="dropdown-menu small-menu">
+                                <li><a href="{{ path('app_one_candidat')}}">
+                                        <span class="material-icons">person_outline</span>
+                                        Profile
+                                    </a></li>
+                                <li><a href="#">
+                                        <span class="material-icons">settings</span>
+                                        Settings
+                                    </a></li>
+                                <li><a href="{{path('app_logout')}}">
+                                        <span class="material-icons">logout</span>
+                                        Logout
+                                    </a></li>
+
+                            </ul>
+                        </li>
 
 
-                <div class="xp-breadcrumbbar text-center">
-                    <div class="col-md-5 col-lg-4 order-3 order-md-2">
-                        <div class="xp-searchbar">
-                            <form>
-                                <div class="input-group">
-                                    <input type="search" class="form-control"
-                                           placeholder="Search">
-                                    <div class="input-group-append">
-                                        <button class="btn" type="submit" id="button-addon2">Search
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+                    </ul>
+                </nav>
 
-                    <h4 class="page-title">Dashboard</h4>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">{{ app.user.getFirstName() }}</a></li>
-                        <li class="breadcrumb-item active" aria-curent="page">Dashboard</li>
-                    </ol>
-                </div>
-
-
+            </div>
 
         </div>
-        <!------top-navbar-end----------->
 
 
-        <!------main-content-start----------->
-
-        <div class="main-content">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="table-wrapper">
-
-                        <div class="table-title">
-                            <div class="row justify-content-center">
-                                <ul class="nav nav-tabs d-flex w-50">
-                                    <li class="nav-item w-50">
-                                        <a class="nav-link active text-white border-0 tab-link" href="#">Job</a>
-                                    </li>
-                                    <li class="nav-item w-50">
-                                        <a class="nav-link text-white border-0 tab-link" href="#">Internship</a>
-                                    </li>
-                                </ul>
+        <div class="xp-breadcrumbbar text-center">
+            <div class="col-md-5 col-lg-4 order-3 order-md-2">
+                <div class="xp-searchbar">
+                    <form>
+                        <div class="input-group">
+                            <input type="search" class="form-control"
+                                   placeholder="Search">
+                            <div class="input-group-append">
+                                <button class="btn" type="submit" id="button-addon2">Search
+                                </button>
                             </div>
                         </div>
+                    </form>
+                </div>
+            </div>
 
-                        <div class="tab-pane fade show active" id="job-offers">
+            <h4 class="page-title">Dashboard</h4>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">{{ app.user.getFirstName() }}</a></li>
+                <li class="breadcrumb-item active" aria-curent="page">Dashboard</li>
+            </ol>
+        </div>
+
+
+
+    </div>
+    <!------top-navbar-end----------->
+
+
+    <!------main-content-start----------->
+
+    <div class="main-content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-wrapper">
+
+                    <div class="table-title">
+                        <div class="row justify-content-center">
+                            <ul class="nav nav-tabs d-flex w-50">
+                                <li class="nav-item w-50">
+                                    <a class="nav-link active text-white border-0 tab-link" href="#">Job</a>
+                                </li>
+                                <li class="nav-item w-50">
+                                    <a class="nav-link text-white border-0 tab-link" href="#">Internship</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade show active" id="job-offers">
                         {% for j in job %}
                             <div class="card shadow rounded-3 mt-3 mb-5">
                                 <div class="card-body">
@@ -163,60 +163,60 @@
                                 </div>
                             </div>
                         {% endfor %}
-                        </div>
-
-                        <div class="tab-pane fade" id="internship-offers">
-                            {% for i in internship %}
-                                <div class="card shadow rounded-3 mt-3 mb-5">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Title: {{ i.getTitle() }}</h5>
-                                        <p class="card-text">Description: {{ i.getDescription() }}</p>
-                                        <p class="card-text">Requirements: {{ i.getReqSkills() }}</p>
-
-                                    </div>
-                                </div>
-                            {% endfor %}
-                        </div>
-
-
-
-                        <div class="clearfix">
-                            <div class="hint-text">showing <b>5</b> out of <b>25</b></div>
-                            <ul class="pagination">
-                                <li class="page-item disabled"><a href="#">Previous</a></li>
-                                <li class="page-item "><a href="#"class="page-link">1</a></li>
-                                <li class="page-item "><a href="#"class="page-link">2</a></li>
-                                <li class="page-item active"><a href="#"class="page-link">3</a></li>
-                                <li class="page-item "><a href="#"class="page-link">4</a></li>
-                                <li class="page-item "><a href="#"class="page-link">5</a></li>
-                                <li class="page-item "><a href="#" class="page-link">Next</a></li>
-                            </ul>
-                        </div>
-
-
-
-
-
-
-
-
-
                     </div>
+
+                    <div class="tab-pane fade" id="internship-offers">
+                        {% for i in internship %}
+                            <div class="card shadow rounded-3 mt-3 mb-5">
+                                <div class="card-body">
+                                    <h5 class="card-title">Title: {{ i.getTitle() }}</h5>
+                                    <p class="card-text">Description: {{ i.getDescription() }}</p>
+                                    <p class="card-text">Requirements: {{ i.getReqSkills() }}</p>
+
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+
+
+                    <div class="clearfix">
+                        <div class="hint-text">showing <b>5</b> out of <b>25</b></div>
+                        <ul class="pagination">
+                            <li class="page-item disabled"><a href="#">Previous</a></li>
+                            <li class="page-item "><a href="#"class="page-link">1</a></li>
+                            <li class="page-item "><a href="#"class="page-link">2</a></li>
+                            <li class="page-item active"><a href="#"class="page-link">3</a></li>
+                            <li class="page-item "><a href="#"class="page-link">4</a></li>
+                            <li class="page-item "><a href="#"class="page-link">5</a></li>
+                            <li class="page-item "><a href="#" class="page-link">Next</a></li>
+                        </ul>
+                    </div>
+
+
+
+
+
+
+
+
+
                 </div>
-
-
-
-
-
-
             </div>
+
+
+
+
+
+
         </div>
-
-        <!------main-content-end----------->
-
-
-
     </div>
+
+    <!------main-content-end----------->
+
+
+
+</div>
 
 
 
@@ -247,5 +247,4 @@
 </body>
 
 </html>
-
 
