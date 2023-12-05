@@ -45,4 +45,5 @@ class RegistrationCandidatController extends AbstractController
             'canForm' => $formC->createView(),
         ]);
     }
+
 }

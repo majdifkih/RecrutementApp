@@ -27,8 +27,8 @@ class Offre
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $Limit_Date = null;
 
-    #[ORM\Column(type: Types::ARRAY, nullable: true)]
-    private ?array $Req_Skills = null;
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $Req_Skills = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $Mission = null;
@@ -76,12 +76,12 @@ class Offre
         return $this;
     }
 
-    public function getReqSkills(): ?array
+    public function getReqSkills(): ?string
     {
         return $this->Req_Skills;
     }
 
-    public function setReqSkills(?array $Req_Skills): static
+    public function setReqSkills(?string $Req_Skills): static
     {
         $this->Req_Skills = $Req_Skills;
 

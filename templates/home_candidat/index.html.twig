@@ -21,6 +21,8 @@
     <!--google material icon-->
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons"rel="stylesheet">
 
+
+
 </head>
 <body>
 
@@ -77,7 +79,7 @@
                                             <span class="xp-user-live"></span>
                                         </a>
                                         <ul class="dropdown-menu small-menu">
-                                            <li><a href="#">
+                                            <li><a href="{{ path('app_one_candidat', {'id': candidat.getId()}) }}">
                                                     <span class="material-icons">person_outline</span>
                                                     Profile
                                                 </a></li>
@@ -120,7 +122,7 @@
 
                     <h4 class="page-title">Dashboard</h4>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Name</a></li>
+                        <li class="breadcrumb-item"><a href="#">{{ candidat.getFirstName }}</a></li>
                         <li class="breadcrumb-item active" aria-curent="page">Dashboard</li>
                     </ol>
                 </div>
@@ -139,42 +141,44 @@
                     <div class="table-wrapper">
 
                         <div class="table-title">
-                            <div class="row">
-                                <div class="col-sm-6 p-0 flex justify-content-lg-start justify-content-center">
-                                    <h2 class="ml-lg-2">Liste des offres</h2>
-                                </div>
-
+                            <div class="row justify-content-center">
+                                <ul class="nav nav-tabs d-flex w-50">
+                                    <li class="nav-item w-50">
+                                        <a class="nav-link active text-white border-0 tab-link" href="#">Job</a>
+                                    </li>
+                                    <li class="nav-item w-50">
+                                        <a class="nav-link text-white border-0 tab-link" href="#">Internship</a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
 
-                        <table class="table table-striped table-hover">
-                            <thead>
-                            <tr>
+                        <div class="tab-pane fade show active" id="job-offers">
+                        {% for j in job %}
+                            <div class="card shadow rounded-3 mt-3 mb-5">
+                                <div class="card-body">
+                                    <h5 class="card-title">Title: {{ j.getTitle() }}</h5>
+                                    <p class="card-text">Description: {{ j.getDescription() }}</p>
+                                    <p class="card-text">Requirements: {{ j.getReqSkills() }}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        </div>
 
-                                <th>Name</th>
+                        <div class="tab-pane fade" id="internship-offers">
+                            {% for i in internship %}
+                                <div class="card shadow rounded-3 mt-3 mb-5">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Title: {{ i.getTitle() }}</h5>
+                                        <p class="card-text">Description: {{ i.getDescription() }}</p>
+                                        <p class="card-text">Requirements: {{ i.getReqSkills() }}</p>
 
-                            </tr>
-                            </thead>
-
-                            <tbody>
-                            <tr>
-
-                                <th>Thomas Hardy</th>
-
-                                <th>
-                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal">
-                                       <button> <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>Detail</button>
-                                    </a>
-
-                                </th>
-                            </tr>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
 
 
-
-                            </tbody>
-
-
-                        </table>
 
                         <div class="clearfix">
                             <div class="hint-text">showing <b>5</b> out of <b>25</b></div>
@@ -229,6 +233,8 @@
 <script src="/assets/js/Dash/jquery-3.3.1.slim.min.js"></script>
 
 <script src="/assets/js/Dash/bootstrap.min.js"></script>
+
+
 
 
 
