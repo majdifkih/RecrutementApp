@@ -35,8 +35,8 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                           Total Jobs Offers</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                           Total Offers</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ totalOffres }}</div>
                                     </div>
                                     <div class="col-auto">
                                         <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -54,7 +54,7 @@
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                             Total Jobs </div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">21</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ totalJobs }}</div>
                                     </div>
                                     <div class="col-auto">
                                         <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -72,7 +72,7 @@
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                             Total Internships </div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">21</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ totalInternShips }}</div>
                                     </div>
                                     <div class="col-auto">
                                         <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -89,7 +89,7 @@
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                            Total Jobs Submited </div>
+                                            Total Offers Submited </div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
                                     </div>
                                     <div class="col-auto">
@@ -112,24 +112,7 @@
         </a>
 
         <!-- Logout Modal-->
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="{{ path('app_logout') }}">Logout</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+                {% include '/home_recruteur/logoutModal.html.twig' %}
 
         <!-- Bootstrap core JavaScript-->
         <script src="/assets/vendor/jquery/jquery.min.js"></script>

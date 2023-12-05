@@ -28,9 +28,11 @@ class InternShipController extends AbstractController
         $internShip = new InternShip();
         $form = $this->createForm(InternShipType::class, $internShip);
         $form->handleRequest($request);
+        $recruiter = $this->getUser();
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($internShip);
+            $internShip->setRecruiter($recruiter);
             $entityManager->flush();
 
             return $this->redirectToRoute('get_all_jobs', [], Response::HTTP_SEE_OTHER);

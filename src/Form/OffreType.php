@@ -9,7 +9,10 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class OffreType extends AbstractType
@@ -19,20 +22,16 @@ class OffreType extends AbstractType
         $builder
             ->add('Title')
             ->add('Limit_Date',DateType::class)
-            ->add('Req_Skills',CollectionType::class,[
-                'entry_type'=>TextareaType::class,
+            ->add('Req_Skills', CollectionType::class, [
+                'entry_type' => TextType::class,
                 'allow_add' => true,
+                'allow_delete' => true,
                 'by_reference' => false,
             ])
-            ->add('Mission',)
-            ->add('Description',TextareaType::class)
-//            ->add('Recruiter',EntityType::class,[
-//                'class'=>Recruiter::class,
-//                'choice_label'=>'first_name'
-//            ])
-        ;
-    }
+            ->add('Mission')
+            ->add('Description',TextareaType::class);
 
+    }
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
