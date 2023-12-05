@@ -28,10 +28,18 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
 
+
+
+
+
+
+    <!--google material icon-->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons"rel="stylesheet">
     <!-- Template Stylesheet -->
     <link href="/assets/css/style.css" rel="stylesheet">
     {% block stylesheets %}
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
     {% endblock %}
 
     {% block javascripts %}
@@ -50,38 +58,67 @@
 
 
     <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-        <a href="{{ path ('app_home_page') }}" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
-            <h1 class="m-0 text-primary">App Recrutement</h1>
-        </a>
-        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="" class="nav-item nav-link active">Home</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Jobs</a>
-                    <div class="dropdown-menu rounded-0 m-0">
-                        <a href="{{ path('app_job_index') }}" class="dropdown-item">Job Offers</a>
-                        <a href="{{ path('app_intern_ship_index') }}" class="dropdown-item">Internship Offers</a>
-                    </div>
-                </div>
-
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Register</a>
-                    <div class="dropdown-menu rounded-0 m-0">
-                        <a href="{{ path ('app_registration_recruiter') }}" class="dropdown-item">Recruiter</a>
-                        <a href="{{ path('app_registration_candidat') }}" class="dropdown-item">Candidat</a>
-                    </div>
-                </div>
-
-                <a href="{{ path('app_login') }}" class="nav-item nav-link"> Login </a>
+    <nav class="navbar navbar-expand-md navbar-light bg-light shadow">
+        <div class="container">
+            <a class="navbar-brand" href="{{ path('app_home_page') }}">
+                <h2 class="m-0 text-primary">  App Recrutement</h2>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{{ path('app_home_page') }}">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="jobsDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Offers</a>
+                        <div class="dropdown-menu" aria-labelledby="jobsDropdown">
+                            <a class="dropdown-item" href="{{ path('app_job_index') }}" style="text-decoration: none;color: #808080; display: flex; margin-top: 4%">  <span class="material-icons" style="color: #808080;margin-right: 4%">work</span> Job Offers</a>
+                            <a class="dropdown-item" href="{{ path('app_intern_ship_index') }}" style="text-decoration: none;color: #808080; display: flex; margin-top: 4%"><span class="material-icons" style="color: #808080;margin-right: 4%">school</span> Internship Offers</a>
+                        </div>
+                    </li>
 
 
+                    {% if app.user %}
+
+                        <li class="nav-item"><a class="nav-link" href="{{ path('app_home_page') }}">My offers</a></li>
+                        </u>
+                        <li class="dropdown nav-item">
+                            <a class="nav-link" href="#" data-toggle="dropdown" style="text-decoration: none;">
+                                <img src="/assets/img/user.jpg" style="width:40px; border-radius:50%;"/> {{ app.user.getFirstName() }}
+                                <span class="xp-user-live"></span>
+                            </a>
+                            <ul class="dropdown-menu small-menu">
+                                <li><a href="{{ path('app_one_candidat')}}" style="text-decoration: none;color: #808080; display: flex; margin-top: 4%" >
+                                        <span class="material-icons" style="color: #808080;">person_outline</span>
+                                        Profile
+                                    </a></li>
+                                <li><a href="{{ path('app_edit_candidat') }}" style="text-decoration: none;color: #808080;display: flex; margin-top: 4%">
+                                        <span class="material-icons" style="color: #808080;">settings</span>
+                                        Settings
+                                    </a></li>
+                                <li><a href="{{path('app_logout')}}" style="text-decoration: none;color: #808080;display: flex; margin-top: 4%">
+                                        <span class="material-icons" style="color: #808080;">logout</span>
+                                        Logout
+                                    </a></li>
+                            </ul>
+                        </li>
+
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_login') }}">Sign In</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="{{ path('app_registration_candidat') }}">Register</a>
+                        </li>
+                    {% endif %}
+                </ul>
             </div>
         </div>
     </nav>
+
+
+
+
     <!-- Navbar End -->
 
 </head>
@@ -154,6 +191,15 @@
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </footer>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="/assets/js/Dash/jquery-3.3.1.slim.min.js"></script>
+
+    <script src="/assets/js/Dash/bootstrap.min.js"></script>
+
+
 {% endblock %}
 
 </html>
