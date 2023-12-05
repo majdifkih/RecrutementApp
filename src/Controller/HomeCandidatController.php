@@ -14,10 +14,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 class HomeCandidatController extends AbstractController
 {
-    #[Route('/home/candidat/{id}', name: 'app_home_candidat')]
-    public function index(EntityManagerInterface $entityManager,$id): Response
+    #[Route('/home/candidat', name: 'app_home_candidat')]
+    public function index(EntityManagerInterface $entityManager): Response
     {
-        $candidat = $entityManager->getRepository(Candidat::class)->find($id);
+        $candidat = $this->getUser();
         $job = $entityManager->getRepository(Job::class)->findAll();
         $internship = $entityManager->getRepository(InternShip::class)->findAll();
         return $this->render('home_candidat/index.html.twig', [
@@ -29,15 +29,12 @@ class HomeCandidatController extends AbstractController
     }
 
 
-    #[Route('/onecandidat/{id}', name: 'app_one_candidat')]
-    public function getOneCandidat(Request $requestR, EntityManagerInterface $entityManager, $id): Response
+    #[Route('/onecandidat', name: 'app_one_candidat')]
+    public function getOneCandidat(): Response
     {
         // Récupérer le candidat par son ID
-        $candidat = $entityManager->getRepository(Candidat::class)->find($id);
+        $candidat = $this->getUser();
 
-        if (!$candidat) {
-            throw $this->createNotFoundException('Candidat non trouvé');
-        }
 
         // Passer l'objet complet à la vue
         return $this->render('home_candidat/profil.html.twig', [

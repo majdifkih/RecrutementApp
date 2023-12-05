@@ -36,9 +36,12 @@
     <input type="hidden" name="_csrf_token"
            value="{{ csrf_token('authenticate') }}"
     >
-    <button class="btn btn-lg btn-primary" type="submit">
+        <div class="d-flex gap-3">
+    <button class="btn btn-lg btn-primary " type="submit">
         Sign in
-    </button>
+    </button><a href="{{ path('app_registration_candidat') }}" class="text-decoration-none mt-3 text-lg">
+            <span class="text-decoration-none "> Sign Up </span>
+        </a></div>
     </div>
     </div>
     </div>
