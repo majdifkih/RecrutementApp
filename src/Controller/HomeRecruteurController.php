@@ -35,9 +35,9 @@ class HomeRecruteurController extends AbstractController
 
     #[Route ('/alljobs',name:'get_all_jobs',methods: ['GET'])]
     public function allJobs(OffreRepository $offreRepository): Response
-    {
+    {       $recruiter = $this->getUser();
         return $this->render('home_recruteur/tables.html.twig', [
-            'offers' => $offreRepository->findAll(),
+            'offers' => $offreRepository->findBy(['recruiter'=>$recruiter]),
         ]);
     }
 

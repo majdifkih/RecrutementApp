@@ -33,7 +33,6 @@ class JobController extends AbstractController
             $entityManager->persist($job);
             $job->setRecruiter($recruiter);
             $entityManager->flush();
-
             return $this->redirectToRoute('get_all_jobs', [], Response::HTTP_SEE_OTHER);
         }
 

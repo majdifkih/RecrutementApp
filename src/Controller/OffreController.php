@@ -58,7 +58,6 @@ class OffreController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
-
             return $this->redirectToRoute('app_offre_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -75,7 +74,6 @@ class OffreController extends AbstractController
             $entityManager->remove($offre);
             $entityManager->flush();
         }
-
         return $this->redirectToRoute('app_offre_index', [], Response::HTTP_SEE_OTHER);
     }
 }

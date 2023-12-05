@@ -34,16 +34,9 @@
 
                 {{ form_row(form.Title) }}
                 {{ form_row(form.Limit_Date) }}
-
-                {{ form_label(form.Req_Skills) }}
-                {{ form_errors(form.Req_Skills) }}
-                {{ form_widget(form.Req_Skills) }}
-
                 {{ form_row(form.Mission) }}
                 {{ form_row(form.Description) }}
-
                 {{ form_row(form.Salary_Prop) }}
-
                 {{ form_row(form.Contract_Type) }}
 
                 <button class="btn btn-outline-primary">{{ button_label|default('Save') }}</button>

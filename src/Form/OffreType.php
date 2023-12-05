@@ -22,12 +22,11 @@ class OffreType extends AbstractType
         $builder
             ->add('Title')
             ->add('Limit_Date',DateType::class)
-            ->add('Req_Skills', CollectionType::class, [
-                'entry_type' => TextType::class,
-                'allow_add' => true,
-                'allow_delete' => true,
-                'by_reference' => false,
-            ])
+//            ->add('Req_Skills', CollectionType::class, [
+//                'allow_add' => true,
+//                'allow_delete' => true,
+//                'by_reference' => false,
+//            ])
             ->add('Mission')
             ->add('Description',TextareaType::class);
 

@@ -39,7 +39,7 @@ class RegistrationCandidatController extends AbstractController
             $entityManager->persist($candidat);
 
             $entityManager->flush();
-            return $this->redirectToRoute('app_home_candidat');
+            return $this->redirectToRoute('app_login');
         }
         return $this->render('registration/RegisterCandidat.html.twig', [
             'canForm' => $formC->createView(),

@@ -8,8 +8,6 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: JobRepository::class)]
 class Job extends Offre
 {
-
-
     #[ORM\Column]
     private ?float $Salary_Prop = null;
 
