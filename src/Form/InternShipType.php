@@ -21,7 +21,7 @@ class InternShipType extends OffreType
                     'YES'=>'YES',
                     'NO'=>'NO'
             ],
-                'expanded'=>true
+                'expanded'=>true,
             ])
             ->add('Start_Date',DateType::class)
             ->add('end_date',DateType::class)

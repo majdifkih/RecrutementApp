@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Candidat;
+use App\Entity\InternShip;
 use App\Entity\Job;
+use App\Entity\Offre;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,10 +18,8 @@ class ApplyToJobController extends AbstractController
     #[Route('/apply/{id}', name: 'apply_to_job')]
     public function applyToJob(Request $request, EntityManagerInterface $entityManager, int $id): Response
     {
-
         $candidat = $this->getUser();
-        $job = $entityManager->getRepository(Job::class)->find($id);
-
+        $job = $entityManager->getRepository(Offre::class)->find($id);
         if ($candidat instanceof Candidat) {
             if (!$job->getCandidats()->contains($candidat)) {
                 $job->addCandidat($candidat);
@@ -33,5 +33,4 @@ class ApplyToJobController extends AbstractController
         }
         return $this->redirectToRoute('app_job_index');
     }
-
 }

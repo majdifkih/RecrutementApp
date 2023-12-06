@@ -72,7 +72,7 @@ class OffreController extends AbstractController
     {
         $entityManager->remove($offre);
         $entityManager->flush();
-        return $this->redirectToRoute('app_home_recruteur', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('get_all_jobs', [], Response::HTTP_SEE_OTHER);
     }
 
 

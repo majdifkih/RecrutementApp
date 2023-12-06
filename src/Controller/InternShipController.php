@@ -47,8 +47,8 @@ class InternShipController extends AbstractController
     #[Route('/{id}', name: 'app_intern_ship_show', methods: ['GET'])]
     public function show(InternShip $internShip): Response
     {
-        return $this->render('intern_ship/show.html.twig', [
-            'intern_ship' => $internShip,
+        return $this->render('internship/show.html.twig', [
+            'internShip' => $internShip,
         ]);
     }
 
