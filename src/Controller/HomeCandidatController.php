@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\InternShip;
 use App\Entity\Job;
 use App\Form\CandidatType;
+use App\Form\CandidatUpdateType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -47,13 +48,12 @@ class HomeCandidatController extends AbstractController
         $candidat = $this->getUser();
 
         // Créer le formulaire
-        $form = $this->createForm(CandidatType::class, $candidat);
+        $form = $this->createForm(CandidatUpdateType::class, $candidat);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $em;
             $entityManager->flush();
-
             // Rediriger vers la page de profil ou une autre page après l'édition
             return $this->redirectToRoute('app_one_candidat');
         }

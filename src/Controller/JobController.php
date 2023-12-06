@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Job;
+use App\Entity\Offre;
 use App\Form\JobType;
+use App\Form\OffreType;
 use App\Repository\JobRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -51,9 +53,9 @@ class JobController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_job_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Job $job, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Offre $job, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createForm(JobType::class, $job);
+        $form = $this->createForm(OffreType::class, $job);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
