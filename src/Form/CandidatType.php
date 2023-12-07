@@ -3,19 +3,20 @@
 namespace App\Form;
 
 use App\Entity\Candidat;
-use App\Form\FileTransformer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-
+use Symfony\Component\Form\DataTransformerInterface;
 class CandidatType extends RegistrationFormType
 {
     private $fileTransformer;
@@ -29,20 +30,27 @@ class CandidatType extends RegistrationFormType
     {
 
         parent::buildForm($builder,$options);
+        // Assuming $builder is your form builder and JsonToArrayTransformer is properly defined and imported.
         $builder
-            ->add('birth_date',BirthdayType::class)
-            ->add('adress',TextareaType::class)
-            ->add('Phone_Number',TelType::class)
-            ->add('skills',CollectionType::class, [
-                'entry_type' => TextType::class,
-                'allow_add' => true,
-                'allow_delete' => true,
-                'by_reference' => false,
-            ])
-            ->add('cv', FileType::class)
-            ->get('cv')
-            ->addModelTransformer($this->fileTransformer);
-        ;
+            ->add('birth_date', BirthdayType::class)
+            ->add('adress', TextareaType::class)
+            ->add('Phone_Number', TelType::class)
+            ->add('skills', HiddenType::class, [
+                'label' => false,
+                'attr' => [
+                    'class' => 'custom-choices-input',
+                ],
+            ]);
+
+// The transformer must be attached to 'skills' field immediately after it is defined
+        $builder->get('skills')->addModelTransformer(new JsonToArrayTransformer());
+
+// Continue adding fields to the form builder
+        $builder
+            ->add('cv', FileType::class);
+
+// If you have a file transformer, it must be added immediately after the 'cv' field
+        $builder->get('cv')->addModelTransformer($this->fileTransformer);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

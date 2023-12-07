@@ -64,8 +64,11 @@
                                     {{ form_row(canForm.adress) }}
                                 </div>
                                 <div class="form-group">
-                                    {{ form_row(canForm.skills) }}
 
+                                    <div class="choices-container border-1">
+                                        <div class="col-md-12">{{ form_row( canForm.skills) }}</div> <br>
+                                    </div>
+                                    <button class="add-choice-button">Ajouter un choix</button>
                                 </div>
                                 <div class="form-group">
                                     {{ form_row(canForm.cv) }}
@@ -81,5 +84,36 @@
         </div>
 
     </div>
+
+    <script>
+        // public/js/custom_choices.js
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const choicesInput = document.querySelector('.custom-choices-input');
+            const addChoiceButton = document.querySelector('.add-choice-button');
+            const choicesContainer = document.querySelector('.choices-container');
+
+            let choices = JSON.parse(choicesInput.value || '[]');
+
+            addChoiceButton.addEventListener('click', function() {
+                const newChoiceInput = document.createElement('input');
+                newChoiceInput.type = 'text';
+                newChoiceInput.className = 'form-control'; // Ajoutez les classes Bootstrap pour le style
+                newChoiceInput.placeholder = 'Nouveau choix';
+
+                newChoiceInput.addEventListener('change', function() {
+                    choices.push(newChoiceInput.value);
+                    updateChoicesInput();
+                });
+
+                choicesContainer.appendChild(newChoiceInput);
+            });
+
+            function updateChoicesInput() {
+                choicesInput.value = JSON.stringify(choices);
+            }
+        });
+
+    </script>
 
 {% endblock %}

@@ -50,11 +50,9 @@
 
 
                         <p>SKILLS</p>
-                        <a href=""></a><br/>
-                        <a href="">Web Developer</a><br/>
-                        <a href="">WordPress</a><br/>
-                        <a href="">WooCommerce</a><br/>
-                        <a href="">PHP, .Net</a><br/>
+                        {% for skill in app.user.skills %}
+                            <a href="#">{{ skill }}</a><br/>
+                        {% endfor %}
                     </div>
                 </div>
                 <div class="col-md-8">
