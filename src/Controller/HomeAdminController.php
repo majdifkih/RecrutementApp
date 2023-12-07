@@ -7,9 +7,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+
+
+#[Route('/dashboard/admin')]
 class HomeAdminController extends AbstractController
 {
-    #[Route('/dashboard/admin', name: 'app_home_admin')]
+    #[Route('/', name: 'app_home_admin')]
     public function index(UserRepository $userRepository): Response
     {
         return $this->render('home_admin/index.html.twig', [
