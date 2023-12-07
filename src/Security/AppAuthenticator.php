@@ -47,7 +47,7 @@ class AppAuthenticator extends AbstractLoginFormAuthenticator
 
             $roles = $user->getRoles();
 
-            if (in_array('RECRUITER', $roles)) {
+            if (in_array('ROLE_RECRUITER', $roles)) {
                 return new RedirectResponse($this->urlGenerator->generate('app_home_recruteur'));
             } else {
                 return new RedirectResponse($this->urlGenerator->generate('app_home_page'));

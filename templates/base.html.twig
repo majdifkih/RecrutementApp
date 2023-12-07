@@ -85,6 +85,9 @@
                         <li class="dropdown nav-item">
                             <a class="nav-link" href="#" data-toggle="dropdown" style="text-decoration: none;">
                                 <img src="/assets/img/user.jpg" style="width:40px; border-radius:50%;"/> {{ app.user.getFirstName() }}
+{#                                {% for role in app.user.roles %}#}
+{#                                    <li>{{ role }}</li>#}
+{#                                {% endfor %}#}
                                 <span class="xp-user-live"></span>
                             </a>
                             <ul class="dropdown-menu small-menu">
