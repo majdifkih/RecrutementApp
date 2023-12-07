@@ -67,13 +67,13 @@ class OffreController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_offre_delete', methods: ['POST'])]
+    #[Route('/delete/{id}', name: 'app_offre_delete', methods: ['POST'])]
     public function delete(Request $request, Offre $offre, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$offre->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($offre);
-            $entityManager->flush();
-        }
-        return $this->redirectToRoute('app_offre_index', [], Response::HTTP_SEE_OTHER);
+        $entityManager->remove($offre);
+        $entityManager->flush();
+        return $this->redirectToRoute('get_all_jobs', [], Response::HTTP_SEE_OTHER);
     }
+
+
 }

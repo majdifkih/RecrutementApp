@@ -16,14 +16,13 @@ class SecurityController extends AbstractController
     {
          if ($this->getUser()) {
              $roles = $this->getUser()->getRoles();
-
-             if (in_array('RECRUITER',$roles)){
+             if (in_array('RECRUITER',$roles)) {
                  return new RedirectResponse($this->generateUrl('app_home_recruteur'));
-             } else {
+             }
+             else {
                  return new RedirectResponse($this->generateUrl('app_home_page'));
              }
          }
-
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
 
