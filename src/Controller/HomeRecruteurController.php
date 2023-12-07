@@ -20,8 +20,6 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 #[Route('/dashboard')]
 class HomeRecruteurController extends AbstractController
 {
-
-
     #[Route('/', name: 'app_home_recruteur')]
     public function index(JobRepository $jobRepository,OffreRepository $offreRepository,InternShipRepository $internShipRepository): Response
     {
@@ -30,13 +28,23 @@ class HomeRecruteurController extends AbstractController
         $totalOffres = $offreRepository->count(['recruiter' => $recruiterId]);
         $totalJobs = $jobRepository->count(['recruiter' => $recruiterId]);
         $totalInternships = $internShipRepository->count(['recruiter' => $recruiterId]);
-//        $offersWithCandidates = $offreRepository->countOffersWithCandidates($recruiterId);
         return $this->render('home_recruteur/index.html.twig', [
             'controller_name' => 'HomeRecruteurController',
             'totalJobs' => $totalJobs,
             'totalOffres'=>$totalOffres,
-            'totalInternShips'=>$totalInternships
-//            'offersWithCandidates'=>$offersWithCandidates
+            'totalInternShips'=>$totalInternships,
+        ]);
+    }
+
+
+    #[Route('/appliedJobs',name: 'applied_jobs')]
+    public function appliedJobs(OffreRepository $offreRepository): Response
+    {
+        $recruiter = $this->getUser();
+        $recruiterId = $recruiter->getId();
+        $offersWithCandidates = $offreRepository->findOffreCandidatIds($recruiterId);
+        return $this->render('home_recruteur/appliedjobs.html.twig',[
+            'offersWithCandidates'=>$offersWithCandidates,
         ]);
     }
 

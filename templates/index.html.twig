@@ -189,9 +189,9 @@
                                         <img class="flex-shrink-0 img-fluid border rounded" src="/assets/img/com-logo-1.jpg" alt="" style="width: 80px; height: 80px;">
                                         <div class="text-start ps-4">
                                             <a href="{{ path('app_job_show', { 'id': job.id }) }}"> <h5 class="mb-3">{{ job.Title }}</h5> </a>
-                                            <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>New York, USA</span>
-                                            <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>Full Time</span>
-                                            <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>{{ job.SalaryProp }}</span>
+                                            <span class="text-truncate me-3">  <i class="fa fa-file-contract text-primary me-2"></i> <b> Contract Type : </b> {{ job.ContractType }}</span>
+                                            <span class="text-truncate me-3"> <i class="far fa-calendar-alt text-primary me-2"></i> <b> Limit Date : </b> {{ job.LimitDate ? job.LimitDate|date('Y-m-d') : '' }}</span>
+                                            <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>  <b> Salary :  </b> {{ job.SalaryProp }}</span>
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">

@@ -21,18 +21,18 @@ class OffreRepository extends ServiceEntityRepository
         parent::__construct($registry, Offre::class);
     }
 
+    public function findOffreCandidatIds(int $recruiterId)
+    {
+        return $this->createQueryBuilder('o')
+            ->select('o.id as offre_id, c.id as candidat_id,c.first_name as candidat_name,c.cv as candidat_cv,c.last_name as candidat_lastname,o.Title as offre_title')
+            ->join('o.candidats', 'c')
+            ->where('o.recruiter = :recruiterId')
+            ->setParameter('recruiterId', $recruiterId)
+            ->getQuery()
+            ->getResult();
+    }
 
-//    public function countOffersWithCandidates($recruiterId)
-//    {
-//        return $this->createQueryBuilder('o')
-//            ->select('COUNT(o.id)')
-//            ->leftJoin('o.candidats', 'c')
-//            ->leftJoin('c.user', 'cu') // Assuming that the User entity is associated with Candidat
-//            ->andWhere('cu.id = :recruiterId')
-//            ->setParameter('recruiterId', $recruiterId)
-//            ->getQuery()
-//            ->getSingleScalarResult();
-//    }
+
 
 //    /**
 //     * @return Offre[] Returns an array of Offre objects

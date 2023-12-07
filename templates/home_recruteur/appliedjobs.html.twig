@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include '/home_recruteur/head.html.twig' %}
+
+<body id="page-top">
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    {% include '/home_recruteur/sidebar.html.twig' %}
+    <!-- End of Sidebar -->
+
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+
+            <!-- Topbar -->
+            {% include '/home_recruteur/topBar.html.twig' %}
+            <!-- End of Topbar -->
+
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+
+
+
+
+                <!-- DataTales Example -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Jobs List</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <th>Offre ID</th>
+                                    <th>Offre Title </th>
+                                    <th>Candidat Full Name</th>
+                                    <th>Candidat CV</th>
+                                    <th> Download Cv </th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                {% for row in offersWithCandidates %}
+
+
+                                <tr>
+                                    <td>{{ row.offre_id }}</td>
+                                    <td>{{ row.offre_title }}</td>
+                                    <td>{{ row.candidat_name}} {{ row.candidat_lastname }}</td>
+                                    <td> {{ row.candidat_cv}} </td>
+                                    <td> <a href=""> <i class="fa fa-download" style="text-align: center"> </i> </a> </td>
+                                </tr>
+                                </tbody>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="9">no Applied Jobs found</td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- End of Main Content -->
+
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Logout Modal-->
+{% include '/home_recruteur/logoutModal.html.twig' %}
+
+<!-- Bootstrap core JavaScript-->
+<script src="/assets/vendor/jquery/jquery.min.js"></script>
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="/assets/js/sb-admin-2.min.js"></script>
+
+<!-- Page level plugins -->
+<script src="/assets/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="/assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="/assets/js/demo/datatables-demo.js"></script>
+
+</body>
+
+</html>

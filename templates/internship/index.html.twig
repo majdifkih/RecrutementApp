@@ -22,9 +22,9 @@
 
                                     <div class="text-start ps-4">
                                         <h5 class="mb-3"> <a href="{{ path('app_intern_ship_show', { 'id': internhip.id }) }}" > {{ internhip.Title }} </a> </h5>
-                                        <span class="text-truncate me-3"><i class="fa fa-money-bill text-primary me-2"> Payed : </i>{{ internhip.payed }}</span>
-                                        <span class="text-truncate me-3"><i class="far fa-calendar-alt text-primary me-2"> Limit Date : </i>{{ internhip.LimitDate ? internhip.LimitDate|date('Y-m-d') : '' }}</span>
-                                        <span class="text-truncate me-3"><i class="fa fa-calendar-alt text-primary me-2"> Start Date : </i>{{ internhip.startDate ? internhip.startDate|date('Y-m-d') : ''}}</span>
+                                        <span class="text-truncate me-3"><i class="fa fa-money-bill text-primary me-2"> </i>  <b> Payed : </b> {{ internhip.payed }}</span>
+                                        <span class="text-truncate me-3"><i class="far fa-calendar-alt text-primary me-2"> </i> <b> Limit Date : </b> {{ internhip.LimitDate ? internhip.LimitDate|date('Y-m-d') : '' }}</span>
+                                        <span class="text-truncate me-3"><i class="fa fa-calendar-alt text-primary me-2"> </i> <b> Start Date : </b> {{ internhip.startDate ? internhip.startDate|date('Y-m-d') : ''}}</span>
                                     </div>
 
 

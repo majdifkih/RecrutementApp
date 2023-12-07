@@ -9,10 +9,10 @@ use Symfony\Component\Routing\Annotation\Route;
 
 
 
-#[Route('/dashboard/admin')]
+#[Route('/admin')]
 class HomeAdminController extends AbstractController
 {
-    #[Route('/', name: 'app_home_admin')]
+    #[Route('/users', name: 'app_home_admin')]
     public function index(UserRepository $userRepository): Response
     {
         return $this->render('home_admin/index.html.twig', [
@@ -20,3 +20,4 @@ class HomeAdminController extends AbstractController
         ]);
     }
 }
+

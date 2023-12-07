@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 class InternShip extends Offre
 {
     #[ORM\Column]
-    private ?bool $Payed = null;
+    private ?string $Payed = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $Start_Date = null;
