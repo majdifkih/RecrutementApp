@@ -40,13 +40,7 @@
                     <h4 class="mb-3">Required Skills </h4>
                     <p>{{ job.ReqSkills }}</p>
 
-                    <div class="d-flex mb-3">
-                        {% if app.user %}
-                            <a class="btn btn-outline-primary btn-lg" href="{{ path('apply_to_job', { 'id': job.id }) }}">Apply Now</a>
-                        {% else  %}
-                            <a class="btn btn-primary btn-lg" href="{{ path('app_login') }}">Connect to aplly </a>
-                        {% endif %}
-                    </div>
+
 
 
                 </div>
@@ -54,5 +48,13 @@
             </div>
             </div>
         </div>
+</div>
         <!-- Job Detail End -->
+    <div class="d-flex mb-3">
+        {% if app.user %}
+            <a class="btn btn-outline-primary btn-lg" href="{{ path('apply_to_job', { 'id': job.id }) }}">Apply Now</a>
+        {% else  %}
+            <a class="btn btn-primary btn-lg" href="{{ path('app_login') }}">Connect to aplly </a>
+        {% endif %}
+    </div>
 {% endblock %}

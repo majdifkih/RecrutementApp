@@ -45,17 +45,19 @@
                     <h4 class="mb-3">Required Skills </h4>
                     <p>{{ internShip.ReqSkills ? internShip.ReqSkills|join(', ') : '' }}</p>
 
-                    {#                    <ul class="list-unstyled">#}
-                    {#                        <li><i class="fa fa-angle-right text-primary me-2"></i>Dolor justo tempor duo ipsum accusam</li>#}
-                    {#                        <li><i class="fa fa-angle-right text-primary me-2"></i>Elitr stet dolor vero clita labore gubergren</li>#}
-                    {#                        <li><i class="fa fa-angle-right text-primary me-2"></i>Rebum vero dolores dolores elitr</li>#}
-                    {#                        <li><i class="fa fa-angle-right text-primary me-2"></i>Est voluptua et sanctus at sanctus erat</li>#}
-                    {#                        <li><i class="fa fa-angle-right text-primary me-2"></i>Diam diam stet erat no est est</li>#}
-                    {#                    </ul>#}
+
                 </div>
 
             </div>
         </div>
     </div>
+</div>
     <!-- Job Detail End -->
+    <div class="d-flex mb-3">
+        {% if app.user %}
+            <a class="btn btn-outline-primary btn-lg" href="{{ path('apply_to_job', { 'id': internShip.id }) }}">Apply Now</a>
+        {% else  %}
+            <a class="btn btn-primary btn-lg" href="{{ path('app_login') }}">Connect to aplly </a>
+        {% endif %}
+    </div>
     {% endblock %}
