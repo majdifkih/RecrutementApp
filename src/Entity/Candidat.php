@@ -26,7 +26,7 @@ class Candidat extends User
     #[ORM\Column(length: 255)]
     private ?string $cv = null;
 
-    #[ORM\ManyToMany(targetEntity: Offre::class, inversedBy: 'candidats')]
+    #[ORM\ManyToMany(targetEntity: Offre::class, inversedBy: 'candidats',cascade: ['persist','remove'])]
     private Collection $Offre;
 
     #[ORM\OneToOne(targetEntity: User::class, inversedBy: 'candidat')]

@@ -14,7 +14,7 @@ class Recruiter extends User
     #[ORM\Column(length: 255)]
     private ?string $Company_Name = null;
 
-    #[ORM\OneToMany(mappedBy: 'recruiter', targetEntity: Offre::class)]
+    #[ORM\OneToMany(mappedBy: 'recruiter', targetEntity: Offre::class,cascade: ['persist','remove'])]
     private Collection $Offre;
 
     public function __construct()
