@@ -25,9 +25,15 @@
                     <img class="flex-shrink-0 img-fluid border rounded" src="/assets/img/com-logo-2.jpg" alt="" style="width: 80px; height: 80px;">
                     <div class="text-start ps-4">
                         <h3 class="mb-3">{{ internShip.Title }}</h3>
-                        <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>New York, USA</span>
-                        <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>{{ internShip.payed }}</span>
-                        <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>{{ internShip.startDate ? internShip.startDate|date('Y-m-d') : ''}}</span>
+                        <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>{{ internShip.Location }}</span>
+                        {% if internShip.payed == 1 %}
+                        <span class="text-truncate me-3"><i class="far fa-money-bill-alt text-primary me-2"> </i> Payed Internship
+                        </span>
+                        {% else %}
+                        <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"> </i>Not Payed Internship </span>
+                        {% endif %}
+
+                        <span class="text-truncate me-0"><i class="far fa-calendar-check text-primary me-2"></i>  <b> From : </b> {{ internShip.startDate ? internShip.startDate|date('Y-m-d') : ''}} <b>  To : </b> {{ internShip.startDate ? internShip.endDate|date('Y-m-d') : ''}}</span>
                     </div>
                 </div>
 

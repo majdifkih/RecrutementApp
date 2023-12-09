@@ -32,6 +32,17 @@ class OffreRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function countOffers(int $recruiterId)
+    {
+        return $this->createQueryBuilder('o')
+            ->select('COUNT(o.id) as offer_count')
+            ->join('o.candidats', 'c')
+            ->where('o.recruiter = :recruiterId')
+            ->setParameter('recruiterId', $recruiterId)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
     public function findSubmitedOffre(int $candidatId)
     {
                return $this->createQueryBuilder('o')

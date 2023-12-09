@@ -28,14 +28,14 @@ class Offre
     private ?\DateTimeInterface $Limit_Date = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
-    private ?array $Req_Skills = null;
+    private ?string $Req_Skills = null;
 
-    public function getReqSkills(): ?array
+    public function getReqSkills(): ?string
     {
         return $this->Req_Skills;
     }
 
-    public function setReqSkills(?array $Req_Skills): void
+    public function setReqSkills(?string $Req_Skills): void
     {
         $this->Req_Skills = $Req_Skills;
     }
@@ -51,6 +51,12 @@ class Offre
 
     #[ORM\ManyToOne(inversedBy: 'Offre')]
     private ?Recruiter $recruiter = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $Location = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $TimeType = null;
 
     public function __construct()
     {
@@ -147,6 +153,30 @@ class Offre
     public function setRecruiter(?Recruiter $recruiter): static
     {
         $this->recruiter = $recruiter;
+
+        return $this;
+    }
+
+    public function getLocation(): ?string
+    {
+        return $this->Location;
+    }
+
+    public function setLocation(?string $Location): static
+    {
+        $this->Location = $Location;
+
+        return $this;
+    }
+
+    public function getTimeType(): ?string
+    {
+        return $this->TimeType;
+    }
+
+    public function setTimeType(?string $TimeType): static
+    {
+        $this->TimeType = $TimeType;
 
         return $this;
     }

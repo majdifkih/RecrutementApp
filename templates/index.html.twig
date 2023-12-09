@@ -225,7 +225,11 @@
                                             <a href="{{ path('app_intern_ship_show', { 'id': internship.id }) }}"> <h5 class="mb-3">{{ internship.Title }}</h5> </a>
                                             <span class="text-truncate me-3"><i class="far fa-calendar-alt text-primary me-2"> Start Date : </i>{{ internship.LimitDate ? internship.LimitDate|date('Y-m-d') : '' }}</span>
                                             <span class="text-truncate me-3"><i class="fa fa-calendar-alt text-primary me-2"> End Date : </i>{{ internship.endDate ? internship.startDate|date('Y-m-d') : ''}}</span>
-                                            <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>{{ internship.Payed }}</span>
+                                            {% if internship.payed == 1 %}
+                                            <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i> Payed Internship</span>
+                                            {% else %}
+                                                <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i> Not Payed Internship</span>
+                                                {% endif %}
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">

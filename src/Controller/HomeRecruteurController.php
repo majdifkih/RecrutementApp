@@ -28,11 +28,13 @@ class HomeRecruteurController extends AbstractController
         $totalOffres = $offreRepository->count(['recruiter' => $recruiterId]);
         $totalJobs = $jobRepository->count(['recruiter' => $recruiterId]);
         $totalInternships = $internShipRepository->count(['recruiter' => $recruiterId]);
+        $totalSubmitedOffers = $offreRepository->countOffers($recruiterId);
         return $this->render('home_recruteur/index.html.twig', [
             'controller_name' => 'HomeRecruteurController',
             'totalJobs' => $totalJobs,
             'totalOffres'=>$totalOffres,
             'totalInternShips'=>$totalInternships,
+            'totalSubOffers'=>$totalSubmitedOffers
         ]);
     }
 
