@@ -32,6 +32,19 @@ class OffreRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function findSubmitedOffre(int $candidatId)
+    {
+               return $this->createQueryBuilder('o')
+                   ->select('o.id as offre_id, c.id as candidat_id, c.first_name as candidat_name, c.cv as candidat_cv, c.last_name as candidat_lastname, o.Title as offre_title')
+                   ->join('o.candidats', 'c')
+                   ->where('c.id = :connectedCandidateId')
+                   ->setParameter('connectedCandidateId', $candidatId)
+                   ->getQuery()
+                   ->getResult();
+    }
+
+
+
 
 
 //    /**

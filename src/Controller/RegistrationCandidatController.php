@@ -9,6 +9,7 @@ use App\Form\CandidatType;
 use App\Form\RecruiterType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -26,7 +27,16 @@ class RegistrationCandidatController extends AbstractController
         $formC->handleRequest($requestR);
 
         if ($formC->isSubmitted() && $formC->isValid()) {
-//
+            $cvfile=$formC->get('cv')->getData();
+
+            try {
+                $cvfile->move(
+                    $this->getParameter('files_directory'),
+                );
+            } catch (FileException $e) {
+
+            }
+
             $candidat->setPassword(
                 $userPasswordHasher->hashPassword(
                     $candidat,

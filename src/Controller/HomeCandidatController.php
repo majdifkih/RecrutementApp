@@ -6,6 +6,7 @@ use App\Entity\InternShip;
 use App\Entity\Job;
 use App\Form\CandidatType;
 use App\Form\CandidatUpdateType;
+use App\Repository\OffreRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -25,6 +26,17 @@ class HomeCandidatController extends AbstractController
             'candidat' => $candidat,
             'job' => $job,
             "internship"=>$internship,
+        ]);
+    }
+
+    #[Route('/myoffers',name: 'my_offers')]
+    public function getSubmiteddOffre(EntityManagerInterface $entityManager,OffreRepository $offreRepository):Response
+    {
+        $candidat=$this->getUser();
+        $candidatId=$candidat->getId();
+        $candidatOffers=$offreRepository->findSubmitedOffre($candidatId);
+        return $this->render('/home_candidat/myoffers.html.twig',[
+            'myoffers'=> $candidatOffers
         ]);
     }
 
@@ -48,7 +60,7 @@ class HomeCandidatController extends AbstractController
         $candidat = $this->getUser();
 
         // Créer le formulaire
-        $form = $this->createForm(CandidatUpdateType::class, $candidat);
+        $form = $this->createForm(CandidatType::class, $candidat);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

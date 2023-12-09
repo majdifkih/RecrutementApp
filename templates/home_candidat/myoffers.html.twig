@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Job index{% endblock %}
+
+{% block body %}
+
+
+    <!-- Jobs Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Applied Offers</h1>
+            <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.3s">
+
+                {% for offre in myoffers %}
+                <div class="job-item p-4 mb-4">
+                    <div class="row g-4">
+                        <div class="col-sm-12 col-md-8 d-flex align-items-center">
+                            <img class="flex-shrink-0 img-fluid border rounded" src="/assets/img/com-logo-1.jpg" alt="" style="width: 80px; height: 80px;">
+                            <div class="text-start ps-4">
+                                <a href="{{ path('app_job_show', { 'id': offre.offre_id}) }}"> <h5 class="mb-3">{{ offre.offre_title }}</h5> </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+
+
+                                    {% if myoffers is empty %}
+                                        <tr>
+                                            <td colspan="9">no Applied Jobs found</td>
+                                        </tr>
+                                    {% endif %}
+
+
+
+                        {% if myoffers is empty %}
+                            <tr>
+                                <td colspan="9">no applied Jobs found</td>
+                            </tr>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Jobs End -->
+
+
+{% endblock %}

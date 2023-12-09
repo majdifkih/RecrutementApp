@@ -17,6 +17,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\DataTransformerInterface;
+use Symfony\Component\Validator\Constraints\File;
+
 class CandidatType extends RegistrationFormType
 {
     private $fileTransformer;
@@ -41,15 +43,18 @@ class CandidatType extends RegistrationFormType
                     'class' => 'custom-choices-input',
                 ],
             ]);
-
-// The transformer must be attached to 'skills' field immediately after it is defined
         $builder->get('skills')->addModelTransformer(new JsonToArrayTransformer());
-
-// Continue adding fields to the form builder
         $builder
-            ->add('cv', FileType::class);
-
-// If you have a file transformer, it must be added immediately after the 'cv' field
+            ->add('cv', FileType::class,[
+                'constraints' => [ new File([
+                                        'maxSize' => '10240k',
+                                        'mimeTypes' => [
+                                        'application/pdf',
+                                        'application/x-pdf',
+            ],
+            'mimeTypesMessage' => 'Please upload a valid PDF document',
+        ])]],
+            );
         $builder->get('cv')->addModelTransformer($this->fileTransformer);
     }
 
