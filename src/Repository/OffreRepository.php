@@ -24,7 +24,7 @@ class OffreRepository extends ServiceEntityRepository
     public function findOffreCandidatIds(int $recruiterId)
     {
         return $this->createQueryBuilder('o')
-            ->select('o.id as offre_id, c.id as candidat_id,c.first_name as candidat_name,c.cv as candidat_cv,c.last_name as candidat_lastname,o.Title as offre_title')
+            ->select('o.id as offre_id, c.id as candidat_id,c.first_name as candidat_name,c.cv as candidat_cv,c.last_name as candidat_lastname,c.email as candidat_email,o.Title as offre_title')
             ->join('o.candidats', 'c')
             ->where('o.recruiter = :recruiterId')
             ->setParameter('recruiterId', $recruiterId)

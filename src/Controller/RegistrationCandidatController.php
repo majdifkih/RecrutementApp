@@ -30,13 +30,11 @@ class RegistrationCandidatController extends AbstractController
             $cvfile=$formC->get('cv')->getData();
             if ($cvfile) {
                 $newFilename = uniqid().'.'.$cvfile->guessExtension();
-
                 // Move the file to the upload directory
                 $cvfile->move(
                     $this->getParameter('files_directory'),
                     $newFilename
                 );
-
                 // Update the cv property in the entity
                 $candidat = $formC->getData();
                 $candidat->setCv($newFilename);
@@ -48,11 +46,8 @@ class RegistrationCandidatController extends AbstractController
                     $formC->get('plainPassword')->getData()
                 )
             );
-
             $candidat->setRoles(['CANDIDAT']);
-
             $entityManager->persist($candidat);
-
             $entityManager->flush();
             return $this->redirectToRoute('app_login');
         }
