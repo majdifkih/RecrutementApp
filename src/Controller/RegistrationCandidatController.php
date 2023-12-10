@@ -28,13 +28,18 @@ class RegistrationCandidatController extends AbstractController
 
         if ($formC->isSubmitted() && $formC->isValid()) {
             $cvfile=$formC->get('cv')->getData();
+            if ($cvfile) {
+                $newFilename = uniqid().'.'.$cvfile->guessExtension();
 
-            try {
+                // Move the file to the upload directory
                 $cvfile->move(
                     $this->getParameter('files_directory'),
+                    $newFilename
                 );
-            } catch (FileException $e) {
 
+                // Update the cv property in the entity
+                $candidat = $formC->getData();
+                $candidat->setCv($newFilename);
             }
 
             $candidat->setPassword(
