@@ -37,14 +37,13 @@ class CandidatType extends RegistrationFormType
             ->add('birth_date', BirthdayType::class)
             ->add('adress', TextareaType::class)
             ->add('Phone_Number', TelType::class)
-            ->add('skills', HiddenType::class, [
-                'label' => false,
-                'attr' => [
-                    'class' => 'custom-choices-input',
-                ],
-            ]);
-        $builder->get('skills')->addModelTransformer(new JsonToArrayTransformer());
-        $builder
+//            ->add('skills', HiddenType::class, [
+//                'label' => false,
+//                'attr' => [
+//                    'class' => 'custom-choices-input',
+//                ],
+//            ]);
+//        $builder->get('skills')->addModelTransformer(new JsonToArrayTransformer());
             ->add('cv', FileType::class,[
                 'constraints' => [ new File([
                                         'maxSize' => '10240k',

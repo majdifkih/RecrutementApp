@@ -20,8 +20,8 @@ class Candidat extends User
     #[ORM\Column(nullable: true)]
     private ?int $Phone_Number = null;
 
-    #[ORM\Column(type: Types::ARRAY, nullable: true)]
-    private ?array $skills = null;
+//    #[ORM\Column(type: Types::ARRAY, nullable: true)]
+//    private ?array $skills = null;
 
     #[ORM\Column(length: 255)]
     private ?string $cv = null;
@@ -76,17 +76,17 @@ class Candidat extends User
         return $this;
     }
 
-    public function getSkills(): ?array
-    {
-        return $this->skills;
-    }
-
-    public function setSkills(?array $skills): static
-    {
-        $this->skills = $skills;
-
-        return $this;
-    }
+//    public function getSkills(): ?array
+//    {
+//        return $this->skills;
+//    }
+//
+//    public function setSkills(?array $skills): static
+//    {
+//        $this->skills = $skills;
+//
+//        return $this;
+//    }
 
     public function getCv(): ?string
     {

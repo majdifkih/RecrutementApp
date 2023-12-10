@@ -47,7 +47,6 @@ class HomeCandidatController extends AbstractController
         // Récupérer le candidat par son ID
         $candidat = $this->getUser();
 
-
         // Passer l'objet complet à la vue
         return $this->render('home_candidat/profil.html.twig', [
             'candidat' => $candidat,
@@ -58,9 +57,8 @@ class HomeCandidatController extends AbstractController
     public function editCandidat(Request $request, EntityManagerInterface $em): Response
     {
         $candidat = $this->getUser();
-
         // Créer le formulaire
-        $form = $this->createForm(CandidatType::class, $candidat);
+        $form = $this->createForm(CandidatUpdateType::class, $candidat);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

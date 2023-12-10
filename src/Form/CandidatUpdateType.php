@@ -8,17 +8,17 @@ use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CandidatUpdateType extends AbstractType
+class CandidatUpdateType extends CandidatType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('first_name')
             ->add('last_name')
+            ->add('email')
             ->add('birth_date',BirthdayType::class)
             ->add('adress')
-            ->add('Phone_Number')
-            ->add('skills');
+            ->add('Phone_Number');
     }
 
     public function configureOptions(OptionsResolver $resolver): void
