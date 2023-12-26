@@ -7,7 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class RecruiterUpdateType extends AbstractType
+class RecruiterUpdateType extends RecruiterType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {

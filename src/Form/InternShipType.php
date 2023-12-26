@@ -18,8 +18,8 @@ class InternShipType extends OffreType
 
             ->add('Payed',ChoiceType::class,[
                 'choices'=>[
-                    'YES'=>'YES',
-                    'NO'=>'NO'
+                    'YES'=>true,
+                    'NO'=>false
             ],
                 'expanded'=>true,
             ])
